@@ -278,27 +278,29 @@ const userSessions = new Map<string, {
 
 // Question list
 const questions = [
-  'あなたの好きな数字はなんですか？ 入力してください。',
-  'あなたの二番目に好きな色はなんですか？',
-  '質問3をここに入力',
-  '質問4をここに入力',
-  '質問5をここに入力',
-  '質問6をここに入力',
-  '質問7をここに入力',
-  '質問8をここに入力',
-  '質問9をここに入力',
-  '質問10をここに入力',
-  '質問11をここに入力',
-  '質問12をここに入力',
-  '質問13をここに入力',
-  '質問14をここに入力',
-  '質問15をここに入力',
-  '質問16をここに入力',
-  '質問17をここに入力',
-  '質問18をここに入力',
-  '質問19をここに入力',
-  '質問20をここに入力',
+  '❶12月伝道着地見込み　三帰者人数',
+  '❷12月伝道着地見込み　入会者人数',
+  '❸ふれ愛活動(11/27〜12/17の期間)',
+  '❹ふれ愛活動筋親数',
+  '❺月一程度、支部に来る信者数',
+  '❼まだ定期的には支部に来ない信者数',
+  '❽再訪可能で、今月ふれ愛できた一般人数',
+  '❾新規開拓でふれ愛できた一般人数',
+  // '質問10をここに入力',
+  // '質問11をここに入力',
+  // '質問12をここに入力',
+  // '質問13をここに入力',
+  // '質問14をここに入力',
+  // '質問15をここに入力',
+  // '質問16をここに入力',
+  // '質問17をここに入力',
+  // '質問18をここに入力',
+  // '質問19をここに入力',
+  // '質問20をここに入力',
 ];
+
+// Total number of active questions (drives the Q&A flow)
+const TOTAL_QUESTIONS = questions.length;
 
 // Normalize full-width numbers to half-width numbers
 function normalizeNumber(text: string): string {
@@ -541,7 +543,7 @@ export async function POST(request: NextRequest) {
         });
         
         // Check if we have more questions
-        if (questionNumber < 20) {
+        if (questionNumber < TOTAL_QUESTIONS) {
           // Move to next question
           userSessions.set(userId, {
             ...session,
