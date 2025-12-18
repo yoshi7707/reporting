@@ -1,0 +1,39 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model Report {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  area      String
+  Q1        Int?
+  Q2        Int?
+  Q3        Int?
+  Q4        Int?
+  Q5        Int?
+  Q6        Int?
+  Q7        Int?
+  Q8        Int?
+  Q9        Int?
+  Q10       Int?
+  Q11       Int?
+  Q12       Int?
+  Q13       Int?
+  Q14       Int?
+  Q15       Int?
+  Q16       Int?
+  Q17       Int?
+  Q18       Int?
+  Q19       Int?
+  Q20       Int?
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  
+  @@map("reports")
+}
